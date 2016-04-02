@@ -6,15 +6,17 @@ application cloudshop (
   $iis_site      = 'Default Web Site',
   $docroot       = 'C:/inetpub/wwwroot',
   $file_source   = 'https://s3-us-west-2.amazonaws.com/tseteam/files/sqlwebapp',
+  $administrator = 'vagrant',
 ) {
   cloudshop::db { $name:
-    dbuser      => $dbuser,
-    dbinstance  => $dbinstance,
-    dbpassword  => $dbpassword,
-    dbname      => $dbname,
-    dbserver    => $::fqdn,
-    file_source => $file_source,
-    export      => Mssql["orc_sqlapp-${name}"],
+    dbuser        => $dbuser,
+    dbinstance    => $dbinstance,
+    dbpassword    => $dbpassword,
+    dbname        => $dbname,
+    dbserver      => $::fqdn,
+    file_source   => $file_source,
+    administrator => $administrator,
+    export        => Mssql["orc_sqlapp-${name}"],
   }
   cloudshop::app { $name:
     iis_site    => $iis_site,
