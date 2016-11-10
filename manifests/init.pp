@@ -9,14 +9,13 @@ application cloudshop (
   $administrator = 'vagrant',
 ) {
   cloudshop::db { $name:
-    dbuser        => $dbuser,
-    dbinstance    => $dbinstance,
-    dbpassword    => $dbpassword,
-    dbname        => $dbname,
-    dbserver      => $::fqdn,
-    file_source   => $file_source,
-    administrator => $administrator,
-    export        => Mssql["orc_sqlapp-${name}"],
+    dbuser      => $dbuser,
+    dbinstance  => $dbinstance,
+    dbpassword  => $dbpassword,
+    dbname      => $dbname,
+    dbserver    => $::fqdn,
+    file_source => $file_source,
+    export      => Mssql["orc_sqlapp-${name}"],
   }
   cloudshop::app { $name:
     iis_site    => $iis_site,
